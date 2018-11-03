@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import Amplify from 'aws-amplify';
+import aws_exports from './aws-exports'; // exported by AWS Amplify CLI
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './util/serviceWorker';
 
+// Configure AWS amplify
+Amplify.configure(aws_exports);
+
+// Set Amplify console logging level
+Amplify.Logger.LOG_LEVEL =
+    process.env.NODE_ENV === 'development' ? 'DEBUG' : 'ERROR';
+
+// Render React
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

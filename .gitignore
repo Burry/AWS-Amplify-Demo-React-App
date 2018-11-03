@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# awsamplifyjs
+amplify/\#current-cloud-backend
+aws-info.json
+project-config.json
+aws-exports.*
+amplify/backend/function/*/src/node_modules/
+amplify/backend/function/*/dist/
