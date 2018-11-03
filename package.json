@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "author": "Grant Burry <grant@burry.me> (grantburry.com)",
+  "license": "MIT",
   "dependencies": {
     "aws-amplify": "^1.1.9",
     "react": "^16.6.0",
