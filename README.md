@@ -18,7 +18,7 @@ A demonstration of how to use the [AWS Amplify CLI](https://github.com/aws-ampli
 
 5. Run `amplify init` to initialize the AWS Amplify CLI for the demo project and create initial AWS cloud resources. Choose your editor, and use the default options for the rest of the settings. Choose the AWS profile that you created with `amplify configure`.
 
-6. You can list the available categories of cloud services with `amplify categories`. Create AWS backend resources by running `amplify add <category-name>` to launch into a configuration wizard. This project requires the storage category, so run `amplify add storage`. When configuring storage, Amplify will configure auth as a prerequisite: for this ensure that unauthenticated users are permitted and that they have read/write access.
+6. You can list the available categories of cloud services with `amplify categories`. Create AWS backend resources by running `amplify add <category-name>` to launch into a configuration wizard. This project requires the storage category, so run `amplify add storage` and choose to set up a user content bucket. When configuring storage, Amplify will configure auth as a prerequisite: for this ensure that unauthenticated users are permitted and that they have read/write access.
 
 7. Run `amplify push` to provision AWS resources in the cloud and add the `aws-exports.js` file to the `/src` directory. The application will crash without this file.
 
