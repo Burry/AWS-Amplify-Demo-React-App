@@ -39,7 +39,7 @@ class App extends Component {
       contentType: "text/plain"
     })
       .then(res => {
-        console.info("S3 UPLOAD SUCCESSFUL: ", res);
+        console.info("S3 UPLOAD SUCCEEDED: ", res);
         return this.updateTestTxt();
       })
       .catch(err => console.error("S3 UPLOAD FAILED: ", err));
