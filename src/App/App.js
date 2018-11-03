@@ -23,7 +23,7 @@ class App extends Component {
     Storage.get("test.txt", { download: true })
       .then(({ Body }) => {
         const testTxt = Utf8ArrayToStr(Body);
-        console.log("S3 GET SUCCEEDED: ", testTxt);
+        console.info("S3 GET SUCCEEDED: ", testTxt);
         return this.setState({ testTxt });
       })
       .catch(err => console.error("S3 GET FAILED: ", err));
