@@ -24,7 +24,7 @@ A demonstration of how to use the [AWS Amplify CLI](https://github.com/aws-ampli
 
 8. Run `yarn start` to build the app for a development environment and open a browser window showing the local web server at [http://localhost:3000](http://localhost:3000). The page will automatically reload as you make changes to the code.
 
-9. After developing the application to your liking and having added S3 hosting through `amplify add hosting`, run `amplify publish` to provision AWS resources in the cloud, create or update `aws-exports.js`, run the build command `react-scripts build`, create an optimized production bundle in `/build`, and publish the static site build to S3.
+9. After developing the application to your liking and having added S3 hosting through `amplify add hosting`, run `amplify publish` to provision AWS resources in the cloud, create or update `aws-exports.js`, run the frontend build command `react-scripts build` to create an optimized production bundle in `/build`, and publish the static site build to S3.
 
 ## More Information
 
