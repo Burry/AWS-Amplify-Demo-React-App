@@ -1,29 +1,80 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    background: #282c34;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: calc(10px + 2vmin);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+    text-align: center;
 }
 
 input,
 button {
-  border: 0;
-  font-size: 1em;
-  margin: 0.25em;
-  padding: 0.25em 0.5em;
-  border-radius: 0.25em;
+    border: 0;
+    font-size: 1em;
+    margin: 0 0.25em 1em 0.25em;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    transition: all 0.2s ease;
 }
 
-.App {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input:focus {
+    box-shadow: 0 0 0 0.125em rgba(255, 255, 255, 0.5);
+    outline: 0;
+}
+
+.btn {
+    background: #06F;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #05E;
+}
+
+.btn:focus {
+    background: #05E;
+    box-shadow: 0 0 0 0.125em rgba(0, 102, 255, 0.5);
+    outline: 0;
+}
+
+.btn:active {
+    background: #04D;
+    outline: 0;
+}
+
+.btnError {
+    background: #F00;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.btnError:hover {
+    background: #E00;
+}
+
+.btnError:focus {
+    background: #E00;
+    box-shadow: 0 0 0 0.125em rgba(238, 0, 0, 0.5);
+    outline: 0;
+}
+
+.btnError:active {
+    background: #D00;
+    outline: 0;
+}
+
+.textError {
+    color: #F00;
 }

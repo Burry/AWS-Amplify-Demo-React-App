@@ -9,7 +9,9 @@ class App extends Component {
 
     this.state = {
       text: "",
-      testTxt: "[Loading...]"
+      testTxt: "[Loading...]",
+      getError: false,
+      putError: false
     };
   }
 
@@ -21,12 +23,25 @@ class App extends Component {
   // and set the `testTxt` state
   updateTestTxt = () =>
     Storage.get("test.txt", { download: true })
-      .then(({ Body }) => {
-        const testTxt = Utf8ArrayToStr(Body);
-        console.log("S3 GET SUCCEEDED: ", testTxt);
-        return this.setState({ testTxt });
+      .then(res => {
+        const testTxt = Utf8ArrayToStr(res.Body);
+        console.log("S3 GET SUCCEEDED: ", res);
+        this.setState({
+          testTxt,
+          getError: false
+        });
       })
-      .catch(err => console.error("S3 GET FAILED: ", err));
+      .catch(err => {
+        console.error("S3 GET FAILED: ", err);
+        const testTxt =
+          err.message === "The specified key does not exist."
+            ? "File not found. Upload something!"
+            : err.message;
+        this.setState({
+          testTxt,
+          getError: true
+        });
+      });
 
   // Update text value on change
   handleChange = ({ target: { value: text } }) => this.setState({ text });
@@ -40,32 +55,42 @@ class App extends Component {
     })
       .then(res => {
         console.info("S3 UPLOAD SUCCESSFUL: ", res);
+        this.setState({
+          putError: false
+        });
         return this.updateTestTxt();
       })
-      .catch(err => console.error("S3 UPLOAD FAILED: ", err));
+      .catch(err => {
+        console.error("S3 UPLOAD FAILED: ", err);
+        return this.setState({
+          putError: true
+        });
+      });
   };
 
   render() {
-    const { text, testTxt } = this.state;
+    const { text, testTxt, getError, putError } = this.state;
     return (
-      <div className="App">
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={text}
-            name="text"
-            placeholder="Text to upload"
-            onChange={this.handleChange}
-          />
-          <button type="submit" name="submit">
-            Upload Text
-          </button>
-        </form>
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          value={text}
+          autoFocus
+          placeholder="Text to upload"
+          onChange={this.handleChange}
+        />
+        <button
+          type="submit"
+          className={putError ? "btnError" : "btn"}
+        >
+          {putError ? "Error!" : "Upload Text"}
+        </button>
         <br />
         <code>
-          <b>test.txt: </b> {testTxt}
+          <b>test.txt: </b>
+          <span className={getError && "textError"}>{testTxt}</span>
         </code>
-      </div>
+      </form>
     );
   }
 }
